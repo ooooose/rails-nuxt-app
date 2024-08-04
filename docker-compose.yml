@@ -19,6 +19,13 @@ services:
       - 5432:5432
     volumes:
       - postgres-data:/var/lib/postgresql/data
+  front:
+    build: front/
+    volumes:
+      - ./front:/app:cache
+    ports:
+      - 8080:3000
+    command: sh -c "yarn && yarn dev"
 
 volumes:
   postgres-data:
